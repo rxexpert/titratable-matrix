@@ -116,6 +116,8 @@
             white-space: normal;
             max-width: 180px;
             line-height: 1.8;
+            /* Ensure goal parameter content is left-aligned */
+            text-align: left;
         }
         
         .goal-param br::before {
@@ -132,10 +134,14 @@
         .comments {
             max-width: 450px;
             font-size: 11px;
-            line-height: 1.7;
+            line-height: 1.0;
             color: #55565A;
             text-align: left;
-            white-space: pre-wrap;
+            /* Use pre-line to preserve line breaks while collapsing leading
+               whitespace from the HTML source. This prevents indented/tabbed
+               rendering created by source formatting without requiring
+               additional <br> tags. */
+            white-space: pre-line;
         }
         
         /* Medication Category Colors */
@@ -273,73 +279,102 @@
         }
     </style></head>
 <body>
-<div class="header">
-<h1>Titratable Medications Reference Table</h1>
-<div class="subtitle">Adventist Health Medication Safety Standards</div>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Medication</th>
-<th>Standard Concentration</th>
-<th>Standard Dilution</th>
-<th>Goal Parameter</th>
-<th>Loading/Bolus Dose</th>
-<th>Initial Rate</th>
-<th>Increment Change</th>
-<th>Frequency</th>
-<th>Maximum Dose</th>
-<th>Dosing Range</th>
-<th>Order Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr class="neuromuscular-blocker high-alert">
-<td class="medication-name">atracurium<br/><span class="warning">**HIGH ALERT**</span></td>
-<td class="concentration">#1: 0.5 mg/mL<br/>#2: 0.2 mg/mL</td>
-<td class="dosing">50 mg/100 mL</td>
-<td class="goal-param">
-        • TOF 2 / 4  <br> 
-        • Ventilator synchrony <br>
-        • Other
-</td>
-<td>0.5 mg/kg, other</td>
-<td>2 mcg/kg/min</td>
-<td>1 mcg/kg/min</td>
-<td>15 min</td>
-<td>15 mcg/kg/min</td>
-<td>1 - 15 mcg/kg/min</td>
-<td class="comments">**HIGH ALERT DRUG**<br/>Warning, paralyzing agent causes respiratory depression.<br/> Patient must be ventilated and sedated prior to administration with RASS goal -4.  Do not titrate sedation off while on paralytic<br/>Obtain baseline train-of-four prior to beginning infusion.<br/><br/>Goal parameter must be monitored and documented every 15 minutes until goal is met.<br/> Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-</tr>
-<tr class="neuromuscular-blocker high-alert">
-<td class="medication-name">cisatracurium<br/><span class="warning">**HIGH ALERT**</span></td>
-<td class="concentration">2 mg/mL</td>
-<td class="dosing">200 mg/100 mL</td>
-<td class="goal-param">
-        • TOF 2 / 4  <br> 
-        • Ventilator synchrony <br>
-        • Other
-</td>
-<td>0.2 mg/kg, other</td>
-<td>1 mcg/kg/min</td>
-<td>1 mcg/kg/min</td>
-<td>15 min</td>
-<td>10 mcg/kg/min</td>
-<td>1 - 10 mcg/kg/min</td>
-<td class="comments">**HIGH ALERT DRUG**<br/>Warning, paralyzing agent causes respiratory depression.<br/> Patient must be ventilated and sedated prior to administration with RASS goal -4.  Do not titrate sedation off while on paralytic<br/>Obtain baseline train-of-four prior to beginning infusion.<br/><br/>Goal parameter must be monitored and documented every 15 minutes until goal is met.<br/>                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+    <div class="header">
+        <h1>Titratable Medications Reference Table</h1>
+    <div class="subtitle">Adventist Health Medication Safety Standards</div>
+    <div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Medication</th>
+                <th>Standard Concentration</th>
+                <th>Standard Dilution</th>
+                <th>Goal Parameter</th>
+                <th>Loading/Bolus Dose</th>
+                <th>Initial Rate</th>
+                <th>Increment Change</th>
+                <th>Frequency</th>
+                <th>Maximum Dose</th>
+                <th>Dosing Range</th>
+                <th>Order Comments</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="neuromuscular-blocker high-alert">
+            <td class="medication-name">
+                atracurium<br/>
+                <span class="warning">**HIGH ALERT**</span>
+            </td>
+        <td class="concentration">#1: 0.5 mg/mL<br/>#2: 0.2 mg/mL</td>
+        <td class="dosing">50 mg/100 mL</td>
+        <td class="goal-param">
+            <li>TOF 2 / 4</li>
+            <li>Ventilator synchrony</li>
+            <li>Other</li>
+        </td>
+        <td>
+            <li>0.5 mg/kg</li>
+            <li>other</li>
+        </td>
+        <td>2 mcg/kg/min</td>
+        <td>1 mcg/kg/min</td>
+        <td>15 min</td>
+        <td>15 mcg/kg/min</td>
+        <td>1 - 15 mcg/kg/min</td>
+        <td class="comments">**HIGH ALERT DRUG**<br/>
+            <br>Warning, paralyzing agent causes respiratory depression.<br/>
+            <br>Patient must be ventilated and sedated prior to administration with RASS goal -4. Do not titrate sedation off while on paralytic<br/>
+            <br>Obtain baseline train-of-four prior to beginning infusion.<br/>
+            <br>Goal parameter must be monitored and documented every 15 minutes until goal is met.<br/> 
+            <br>Once goal parameter is met, RN may document goal every 30-60 minutes<br/> 
+            <br>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/>
+            <br>Discontinue order if rate remains at zero for 23 hours.<br/>
+            <br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.
+        </td>
+        </tr>
+    <tr class="neuromuscular-blocker high-alert">
+        <td class="medication-name">cisatracurium<br/>
+            <span class="warning">**HIGH ALERT**</span>
+        </td>
+        <td class="concentration">2 mg/mL</td>
+    <td class="dosing">200 mg/100 mL</td>
+    <td class="goal-param">
+        <li>TOF 2 / 4</li>
+        <li>Ventilator synchrony</li>
+        <li>Other</li>
+    </td>
+        <td>
+            <li>0.2 mg/kg</li>
+            <li>other</li>
+        </td>
+        <td>1 mcg/kg/min</td>
+        <td>1 mcg/kg/min</td>
+        <td>15 min</td>
+        <td>10 mcg/kg/min</td>
+        <td>1 - 10 mcg/kg/min</td>
+        <td class="comments">**HIGH ALERT DRUG**<br/>
+            <br>Warning: paralyzing agent causes respiratory depression.<br/> 
+            <br>Patient must be ventilated and sedated prior to administration with RASS goal -4.  Do not titrate sedation off while on paralytic<br/>
+            <br>Obtain baseline train-of-four prior to beginning infusion.<br/>
+            <br>Goal parameter must be monitored and documented every 15 minutes until goal is met.<br/>
+            <br>Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> 
+            <br>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/>
+            <br>Discontinue order if rate remains at zero for 23 hours.<br/>
+            <br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.<br/>
+        </td>
 </tr>
 <tr class="antihypertensive non-formulary">
 <td class="medication-name">clevidipine<br/><span style="color: #E24301;">(AH non-formulary)</span></td>
 <td class="concentration">0.5 mg/mL</td>
 <td class="dosing">50 mg/100 mL <br/>25 mg/50 mL</td>
 <td class="goal-param">
-        • SBP 130 - 150 <br>
-        • SBP 130 - 160 <br> 
-        • SBP 140 - 180 <br> 
-        • SBP 150 - 180 DBP less than 105 <br> 
-        • SBP 150 - 185 DBP less than 110 <br> 
-        • SBP 160 - 200 <br>
-        • Other
+        <li>SBP 130 - 150</li>
+        <li>SBP 130 - 160</li>
+        <li>SBP 140 - 180</li>
+        <li>SBP 150 - 180 DBP less than 105</li>
+        <li>SBP 150 - 185 DBP less than 110</li>
+        <li>SBP 160 - 200</li>
+        <li>Other</li>
 </td>
 <td>none</td>
 <td>1 mg/hr</td>
@@ -347,7 +382,13 @@
 <td>2 min</td>
 <td>21 mg/hr</td>
 <td>1 - 21 mg/hr</td>
-<td class="comments">Change vial and tubing every 12 hours.<br/><br/>Goal parameter must be monitored and documented every 2 minutes until goal is met.<br/> Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+<td class="comments">Change vial and tubing every 12 hours.<br/>
+    <br>Goal parameter must be monitored and documented every 2 minutes until goal is met.<br/> 
+    <br>Once goal parameter is met, RN may document goal every 30-60 minutes.<br/>
+    <br>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/>
+    <br>Discontinue order if rate remains at zero for 23 hours.<br/>
+    <br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.
+</td>
 </tr>
 <tr class="sedative">
 <td class="medication-name">dexmedeTOMIDine</td>
