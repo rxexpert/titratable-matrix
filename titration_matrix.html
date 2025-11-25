@@ -1,27 +1,28 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titratable Medications Reference Table - Adventist Health</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Titratable Medications Reference Table - Adventist Health</title>
 <style>
         /* Adventist Health Brand Styles */
         body {
             font-family: Arial, Helvetica, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #EFEFF0; /* AH Pastel Gray */
-            font-size: 11px;
-            line-height: 1.5;
+            background-color: #EFEFF0;
+            font-size: 13px;
+            line-height: 1.6;
         }
         
         .header {
-            background-color: #003764; /* AH Dark Blue */
+            background-color: #003764;
             color: white;
             padding: 20px;
             text-align: center;
             margin: -20px -20px 20px -20px;
-            border-bottom: 4px solid #00A0DD; /* AH Light Blue accent */
+            border-bottom: 4px solid #00A0DD;
         }
         
         h1 {
@@ -33,7 +34,7 @@
         }
         
         .subtitle {
-            color: #00A0DD; /* AH Light Blue */
+            color: #00A0DD;
             font-size: 14px;
             margin-top: 8px;
             font-weight: 400;
@@ -51,16 +52,17 @@
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 30px;
+            table-layout: auto;
         }
         
         th {
-            background-color: #003764; /* AH Dark Blue */
+            background-color: #003764;
             color: white;
-            padding: 14px 10px;
+            padding: 16px 12px;
             text-align: left;
             font-weight: 600;
-            font-size: 11px;
-            border: 1px solid #00A0DD; /* AH Light Blue */
+            font-size: 12px;
+            border: 1px solid #00A0DD;
             position: sticky;
             top: 0;
             z-index: 10;
@@ -68,110 +70,189 @@
         }
         
         td {
-            padding: 12px 10px;
-            border: 1px solid #D6EEF0; /* AH Pastel Teal */
+            padding: 14px 12px;
+            border: 1px solid #D6EEF0;
             vertical-align: top;
-            font-size: 10px;
-            line-height: 1.5;
-            color: #55565A; /* AH Gray */
+            font-size: 12px;
+            line-height: 1.6;
+            color: #55565A;
         }
         
         tr:nth-child(even) {
-            background-color: #E1F0FB; /* AH Pastel Blue */
+            background-color: #E1F0FB;
         }
         
         tr:hover {
-            background-color: #D6EEF0; /* AH Pastel Teal */
+            background-color: #D6EEF0;
         }
         
         .medication-name {
             font-weight: bold;
-            color: #003764; /* AH Dark Blue */
-            font-size: 11px;
+            color: #003764;
+            font-size: 13px;
+            min-width: 140px;
         }
         
         .high-alert {
-            background-color: #FDDDD7; /* AH Pastel Pink */
-            border-left: 4px solid #F8485E; /* AH Coral */
+            background-color: #FDDDD7;
+            border-left: 4px solid #F8485E;
         }
         
         .non-formulary {
-            background-color: #FFE5C2; /* AH Pastel Orange */
+            background-color: #FFE5C2;
         }
         
         .warning {
-            color: #F8485E; /* AH Coral */
+            color: #F8485E;
             font-weight: 600;
         }
         
         .concentration {
             white-space: pre-wrap;
-            min-width: 100px;
+            min-width: 110px;
         }
         
         .goal-param {
-            white-space: pre-wrap;
-            min-width: 120px;
+            white-space: normal;
+            max-width: 180px;
+            line-height: 1.8;
+        }
+        
+        .goal-param br::before {
+            content: "• ";
+            color: #003764;
+            font-weight: bold;
         }
         
         .dosing {
             white-space: pre-wrap;
+            min-width: 120px;
         }
         
         .comments {
-            max-width: 400px;
-            font-size: 9px;
-            line-height: 1.4;
-            color: #55565A; /* AH Gray */
+            max-width: 450px;
+            font-size: 11px;
+            line-height: 1.7;
+            color: #55565A;
+            text-align: left;
+            white-space: pre-wrap;
         }
         
-        /* Medication Category Colors - Using AH Accessibility Palette */
+        /* Medication Category Colors */
         .neuromuscular-blocker {
-            background-color: #FDDDD7; /* AH Pastel Pink */
+            background-color: #FDDDD7;
         }
         
         .sedative {
-            background-color: #E0DEF0; /* AH Pastel Purple */
+            background-color: #E0DEF0;
         }
         
         .vasopressor {
-            background-color: #F0F7E8; /* AH Pastel Green */
+            background-color: #F0F7E8;
         }
         
         .antihypertensive {
-            background-color: #E1F0FB; /* AH Pastel Blue */
+            background-color: #E1F0FB;
         }
         
         .analgesic {
-            background-color: #FFFCDF; /* AH Pastel Yellow */
+            background-color: #FFFCDF;
         }
         
         .inotrope {
-            background-color: #D6EEF0; /* AH Pastel Teal */
+            background-color: #D6EEF0;
         }
         
         .footer {
             text-align: center;
             margin-top: 30px;
             padding: 20px;
-            color: #55565A; /* AH Gray */
+            color: #55565A;
             font-size: 10px;
-            border-top: 2px solid #00A0DD; /* AH Light Blue */
+            border-top: 2px solid #00A0DD;
         }
         
+        /* Print Styles for Landscape Letter Size */
         @media print {
+            @page {
+                size: letter landscape;
+                margin: 0.5in;
+            }
+            
             body {
                 background-color: white;
+                padding: 0;
+                font-size: 9px;
             }
+            
             .header {
                 margin: 0;
+                padding: 10px;
                 page-break-after: avoid;
             }
+            
+            h1 {
+                font-size: 18px;
+            }
+            
+            .subtitle {
+                font-size: 11px;
+            }
+            
             .table-container {
                 box-shadow: none;
+                padding: 0;
             }
+            
+            table {
+                page-break-inside: auto;
+                font-size: 8px;
+            }
+            
+            thead {
+                display: table-header-group;
+            }
+            
+            tfoot {
+                display: table-footer-group;
+            }
+            
             tr {
                 page-break-inside: avoid;
+                page-break-after: auto;
+            }
+            
+            th {
+                padding: 8px 6px;
+                font-size: 9px;
+                position: static;
+            }
+            
+            td {
+                padding: 6px 5px;
+                font-size: 8px;
+                line-height: 1.4;
+            }
+            
+            .medication-name {
+                font-size: 9px;
+                min-width: 100px;
+            }
+            
+            .comments {
+                max-width: 280px;
+                font-size: 7px;
+                line-height: 1.5;
+            }
+            
+            .goal-param {
+                max-width: 120px;
+                font-size: 8px;
+            }
+            
+            .footer {
+                page-break-before: avoid;
+                font-size: 8px;
             }
         }
         
@@ -193,396 +274,396 @@
     </style></head>
 <body>
 <div class="header">
-        <h1>Titratable Medications Reference Table</h1>
-        <div class="subtitle">Adventist Health Medication Safety Standards</div>
+<h1>Titratable Medications Reference Table</h1>
+<div class="subtitle">Adventist Health Medication Safety Standards</div>
 <div class="table-container">
 <table>
-    <thead>
-        <tr>
-            <th>Medication</th>
-            <th>Standard Concentration</th>
-            <th>Standard Dilution</th>
-            <th>Goal Parameter</th>
-            <th>Loading/Bolus Dose</th>
-            <th>Initial Rate</th>
-            <th>Increment Change</th>
-            <th>Frequency</th>
-            <th>Maximum Dose</th>
-            <th>Dosing Range</th>
-            <th>Order Comments</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="neuromuscular-blocker high-alert">
-            <td class="medication-name">atracurium<br><span class="warning">**HIGH ALERT**</span></td>
-            <td class="concentration">#1: 0.5 mg/mL<br>#2: 0.2 mg/mL</td>
-            <td class="dosing">50 mg/100 mL</td>
-            <td class="goal-param">TOF 2 / 4<br>•                                Ventilator synchrony<br>•               Other</td>
-            <td>0.5 mg/kg, other</td>
-            <td>2 mcg/kg/min</td>
-            <td>1 mcg/kg/min</td>
-            <td>15 min</td>
-            <td>15 mcg/kg/min</td>
-            <td>1 mcg/kg/min to 15 mcg/kg/min</td>
-            <td class="comments">**HIGH ALERT DRUG**<br>Warning, paralyzing agent causes respiratory depression. Patient must be ventilated and sedated prior to administration with RASS goal -4.  Do not titrate sedation off while on paralytic<br>Obtain baseline train-of-four prior to beginning infusion.<br>Goal parameter must be monitored and documented every 15 minutes until goal is met. <br>Once goal parameter is met, RN may document goal every 30-60 minutes.                               Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="neuromuscular-blocker high-alert">
-            <td class="medication-name">cisatracurium<br><span class="warning">**HIGH ALERT**</span></td>
-            <td class="concentration">2 mg/mL</td>
-            <td class="dosing">200 mg/100 mL</td>
-            <td class="goal-param">TOF 2 / 4<br>•                                Ventilator synchrony<br>•                 Other</td>
-            <td>0.2 mg/kg, other</td>
-            <td>1 mcg/kg/min</td>
-            <td>1 mcg/kg/min</td>
-            <td>15 min</td>
-            <td>10 mcg/kg/min</td>
-            <td>1 mcg/kg/min to 10 mcg/kg/min</td>
-            <td class="comments">**HIGH ALERT DRUG**<br>Warning, paralyzing agent causes respiratory depression. Patient must be ventilated and sedated prior to administration with RASS goal -4.  Do not titrate sedation off while on paralytic<br>Obtain baseline train-of-four prior to beginning infusion.<br>Goal parameter must be monitored and documented every 15 minutes until goal is met.                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.                               Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="antihypertensive non-formulary">
-            <td class="medication-name">clevidipine<br><span style="color: #E24301;">(AH non-formulary)</span></td>
-            <td class="concentration">0.5 mg/mL</td>
-            <td class="dosing">50 mg/100 mL <br>25 mg/50 mL</td>
-            <td class="goal-param">SBP 130 - 150<br>•                            SBP 130 - 160<br>•                         SBP 140 - 180<br>•                                 SBP 150 - 180<br>• DBP < 105      SBP 150 - 185<br>• DBP <110                                                                               SBP 160 - 200<br>•                                  Other</td>
-            <td>none</td>
-            <td>1 mg/hr</td>
-            <td>2 mg/hr</td>
-            <td>2 min</td>
-            <td>21 mg/hr</td>
-            <td>1 mg/hr to 21 mg/hr</td>
-            <td class="comments">Change vial and tubing every 12 hours.<br>Goal parameter must be monitored and documented every 2 minutes until goal is met. <br>Once goal parameter is met, RN may document goal every 30-60 minutes.                               Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="sedative">
-            <td class="medication-name">dexmedeTOMIDine</td>
-            <td class="concentration">4 mcg/mL</td>
-            <td class="dosing">400 mcg/100 mL<br>200 mcg/50mL</td>
-            <td class="goal-param">RASS 0 to -2</td>
-            <td>none</td>
-            <td>0.5 mcg/kg/hr</td>
-            <td>0.1 mcg/kg/hr</td>
-            <td>10 min</td>
-            <td>1.4 mcg/kg/hr</td>
-            <td>0.1 - 1.4<br>mcg/kg/hr</td>
-            <td class="comments">Not appropriate alone if patient on neuromuscular blocker (NMB).                                                               Goal parameter must be monitored and documented every 10 minutes until goal is met. <br>Once goal parameter is met, RN may document goal every 30-60 minutes. <br>If HR less than 60, decrease rate by half & notify provider. If HR is less than or equal to 50, pause the infusion & notify provider.<br>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="">
-            <td class="medication-name">dilTIAZem</td>
-            <td class="concentration">1 mg/mL</td>
-            <td class="dosing">125 mg/125 mL<br>100 mg/100 mL</td>
-            <td class="goal-param">HR 60 - 110<br>•                                Other</td>
-            <td>10 mg, 20 mg, other</td>
-            <td>5 mg/hr</td>
-            <td>2.5 mg/hr</td>
-            <td>15 min</td>
-            <td>15 mg/hr</td>
-            <td>2.5 to 15 mg/hr</td>
-            <td class="comments">Goal parameter must be monitored and documented every 15 minutes until goal is met. <br>Once goal parameter is met, RN may document goal every 30-60 minutes.                                 Turn IV off 2 hours after oral meds given.<br>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="vasopressor">
-            <td class="medication-name">DOBUTamine</td>
-            <td class="concentration">#1: 2000 mcg/mL<br>#2: 4000 mcg/mL</td>
-            <td class="dosing">1000 mg/250 mL<br>500 mg/250 mL</td>
-            <td class="goal-param">MAP 65 - 75<br>•                         ScVO2 > 70%<br>•                               CI 2 - 4<br>•                                          Other</td>
-            <td>none</td>
-            <td>2.5 mcg/kg/min</td>
-            <td>2.5 mcg/kg/min</td>
-            <td>5 min</td>
-            <td>20 mcg/kg/min</td>
-            <td>0.5 mcg/kg/min to 20 mcg/kg/min</td>
-            <td class="comments">Goal parameter must be monitored and documented every 5 minutes until goal is met. <br>Once goal parameter is met, RN may document goal every 30-60 minutes. <br>Hold if HR > 140. <br>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours. <br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="vasopressor">
-            <td class="medication-name">DOPamine</td>
-            <td class="concentration">#1: 3200 mcg/mL<br>#2: 1600 mcg/mL</td>
-            <td class="dosing">800 mg/250 mL<br>400 mg/250 mL</td>
-            <td class="goal-param">MAP  65 - 75<br>•                            Other</td>
-            <td>none</td>
-            <td>2 mcg/kg/min</td>
-            <td>2 mcg/kg/min</td>
-            <td>2 min</td>
-            <td>20 mcg/kg/min</td>
-            <td>2 mcg/kg/min to 20 mcg/kg/min</td>
-            <td class="comments">Administration via peripheral line may be considered for up to 24 hours.<br>Rates greater than 10 mcg/kg/min must be administered via a central line.<br>Goal parameter must be monitored and documented every 2 minutes until goal is met. Once goal parameter is met, RN may document goal every 30-60 minutes.  <br>Hold if HR > 140.<br>Notify provider if maximum dose is met and therapeutic goal is not achieved.                             Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="vasopressor">
-            <td class="medication-name">EPINEPHrine</td>
-            <td class="concentration">#1: 20 mcg/mL<br>#2: 40 mcg/mL</td>
-            <td class="dosing">2 mg/100 mL.                 5 mg/250 mL<br>10 mg/250 mL</td>
-            <td class="goal-param">MAP  65 - 75<br>•                             Other</td>
-            <td>none</td>
-            <td>1 mcg/min</td>
-            <td>1 mcg/min</td>
-            <td>2 min</td>
-            <td>20 mcg/min</td>
-            <td>1 mcg/min to 20 mcg/min</td>
-            <td class="comments">Administration via peripheral line may be considered for up to 24 hours.<br>Rates greater than 15 mcg/min must be administered via a central line.<br>Goal parameter must be monitored and documented every 2 minutes until goal is met. <br>Once goal parameter is met, RN may document goal every 30-60 minutes.  <br>Hold if HR > 140.<br>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="antihypertensive">
-            <td class="medication-name">esmolol</td>
-            <td class="concentration">#1: 10 mg/mL<br>#2: 20 mg/mL</td>
-            <td class="dosing">2500 mg/250 mL<br>2000 mg/100 mL</td>
-            <td class="goal-param">SBP 100 - 140<br>•                             SBP 130 - 160<br>•                            SBP 140 - 180<br>•                               HR 60 - 110<br>•                               Other</td>
-            <td>500 mcg/kg, 1000 mcg/kg, other</td>
-            <td>50 mcg/kg/min</td>
-            <td>50 mcg/kg/min</td>
-            <td>5 min</td>
-            <td>300 mcg/kg/min</td>
-            <td>50 mcg/kg/min to 300 mcg/kg/min</td>
-            <td class="comments">Goal parameter must be monitored and documented every 5 minutes until goal is met. <br>Once goal parameter is met, RN may document goal every 30-60 minutes. <br>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="analgesic">
-            <td class="medication-name">fentaNYL</td>
-            <td class="concentration">#1: 10 mcg/mL<br>#2: 50 mcg/mL</td>
-            <td class="dosing">2500 mcg/250 mL<br>1000 mcg/100 mL<br>5000 mcg/100 mL<br>500 mcg/50 mL</td>
-            <td class="goal-param">CPOT 0 to 2<br>•                            Other</td>
-            <td>25 mcg, 50 mcg, 100 mcg, other</td>
-            <td>50 mcg/hr</td>
-            <td>25 mcg/hr</td>
-            <td>60 min</td>
-            <td>200 mcg/hr</td>
-            <td>25 mcg/hr to 200 mcg/hr</td>
-            <td class="comments">Warning: Medication causes respiratory depression. <br>For Breakthrough Pain (CPOT >2): Bolus 50 mcg every 5 minutes up to 3 times within one hour. If goal is not achieved after 3 consecutive boluses, then increase infusion rate.  <br>Goal parameter must be monitored and documented every 60 minutes until goal is met.<br>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="analgesic">
-            <td class="medication-name">HYDROmorphone</td>
-            <td class="concentration">#1: 0.2 mg/mL<br>#2: 1 mg/mL</td>
-            <td class="dosing">20 mg/100 mL<br>100 mg/100 mL</td>
-            <td class="goal-param">CPOT 0 to 2<br>•                             Other</td>
-            <td>0.4 mg, other</td>
-            <td>0.4 mg/hr</td>
-            <td>0.2 mg/hr</td>
-            <td>15 min</td>
-            <td>2 mg/hr</td>
-            <td>0.2 mg/hr to 2 mg/hr</td>
-            <td class="comments">Goal parameter must be monitored and documented every 15 minutes until goal is met.<br>Once goal parameter is met, RN may document goal every 30-60 minutes.  Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="vasopressor">
-            <td class="medication-name">isoproterenol</td>
-            <td class="concentration">4 mcg/mL</td>
-            <td class="dosing">1000 mcg/250 mL<br>2000 mcg/500 mL</td>
-            <td class="goal-param">MAP 65 - 75<br>•                                HR 60 - 100<br>•                                Other</td>
-            <td>none</td>
-            <td>2 mcg/min</td>
-            <td>1 mcg/min</td>
-            <td>5 min</td>
-            <td>20 mcg/min</td>
-            <td>1 mcg/min to 20 mcg/min</td>
-            <td class="comments">Goal parameter must be monitored and documented every 5 minutes until goal is met.                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.                               Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours. <br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="sedative">
-            <td class="medication-name">ketamine (Sub-dissociative) (pain)</td>
-            <td class="concentration">#1: 2 mg/mL<br>#2: 10 mg/mL</td>
-            <td class="dosing">500 mg/250 mL<br>1000 mg/100 mL</td>
-            <td class="goal-param">CPOT 0 to 2<br>•                          RASS 0 to - 2<br>•                         RASS - 4 to - 5 if on NMB<br>•              Other</td>
-            <td>0.25 mg/kg, other</td>
-            <td>0.05 mg/kg/hr</td>
-            <td>0.05 mg/kg/hr</td>
-            <td>60 min</td>
-            <td>0.3 mg/kg/hr</td>
-            <td>0.05 mg/kg/hr to 0.3 mg/kg/hr</td>
-            <td class="comments">Goal parameter must be monitored and documented every 60 minutes until goal is met.                                   Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="sedative">
-            <td class="medication-name">ketamine (Dissociative)</td>
-            <td class="concentration">#1: 2 mg/mL<br>#2: 10 mg/mL</td>
-            <td class="dosing">500 mg/250 mL<br>1000 mg/100 mL</td>
-            <td class="goal-param">RASS - 4 to - 5 if on NMB<br>•            Other</td>
-            <td>1.5 mg/kg, 3 mg/kg, other</td>
-            <td>1 mg/kg/hr</td>
-            <td>0.5 mg/kg/hr</td>
-            <td>60 min</td>
-            <td>4 mg/kg/hr</td>
-            <td>1 mg/kg/hr to 4 mg/kg/hr</td>
-            <td class="comments">Goal parameter must be monitored and documented every 60 minutes until goal is met.                                   Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="">
-            <td class="medication-name">labetolol</td>
-            <td class="concentration">5 mg/mL</td>
-            <td class="dosing">200 mg/40 mL<br>400 mg/80 mL</td>
-            <td class="goal-param">SBP 100 - 140<br>•                             SBP 130 - 160<br>•                            SBP 140 - 180<br>•                              HR 60 - 110<br>•                               Other</td>
-            <td>10 mg, 20 mg, other</td>
-            <td>1 mg/min</td>
-            <td>1 mg/min</td>
-            <td>15 min</td>
-            <td>4 mg/min</td>
-            <td>1 mg/min to 4 mg/min</td>
-            <td class="comments">Goal parameter must be monitored and documented every 15 minutes until goal is met.                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.                               Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="sedative">
-            <td class="medication-name">LORazepam</td>
-            <td class="concentration">1 mg/mL</td>
-            <td class="dosing">100 mg/100 mL<br>50 mg/50 mL</td>
-            <td class="goal-param">RASS 0 to - 2<br>•                              Other</td>
-            <td>1 mg, 2 mg, other</td>
-            <td>2 mg/hr</td>
-            <td>1 mg/hr</td>
-            <td>60 min</td>
-            <td>10 mg/hr</td>
-            <td>1 mg/hr to 10 mg/hr</td>
-            <td class="comments">Monitor for propylene glycol toxicity.<br>For RASS > 0: Bolus 1 mg every 10 minutes up to 3 times within one hour. If goal is not achieved after 3 consecutive boluses, then increase infusion rate.                                            Goal parameter must be monitored and documented every 60 minutes until goal is met.                                                                                                 Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="sedative">
-            <td class="medication-name">midazolam</td>
-            <td class="concentration">1 mg/mL</td>
-            <td class="dosing">100 mg/100 mL<br>50 mg/50 mL</td>
-            <td class="goal-param">RASS 0 to - 2<br>•                         RASS - 4 to - 5 if on NMB<br>•              Other</td>
-            <td>1 mg, 2 mg, other</td>
-            <td>2 mg/hr</td>
-            <td>1 mg/hr</td>
-            <td>60 min</td>
-            <td>10 mg/hr</td>
-            <td>1 mg/hr to 10 mg/hr</td>
-            <td class="comments">For RASS > 0: Bolus 2 mg every 5 minutes up to 3 times within one hour. If goal is not achieved after 3 consecutive boluses, then increase infusion rate.                                                                                                           Goal parameter must be monitored and documented every 60 minutes until goal is met.                                                                 Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="inotrope">
-            <td class="medication-name">milrinone</td>
-            <td class="concentration">#1: 200 mcg/mL<br>#2: 400 mcg/mL</td>
-            <td class="dosing">20 mg/100 mL<br>40 mg/100 mL</td>
-            <td class="goal-param">CI 2 - 4<br>•                                     Other</td>
-            <td>none</td>
-            <td>0.25 mcg/kg/min</td>
-            <td>0.125 mcg/kg/min</td>
-            <td>30 min</td>
-            <td>0.75 mcg/kg/min</td>
-            <td>0.125 mcg/kg/min to 0.75 mcg/kg/min</td>
-            <td class="comments">Loading dose not typically given due to risk of hypotension. May require vasopressor support.<br>Goal parameter must be monitored and documented every 30 minutes until goal is met.                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.                               Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="analgesic">
-            <td class="medication-name">morphine</td>
-            <td class="concentration">#1: 1 mg/mL<br>#2: 5 mg/mL</td>
-            <td class="dosing">100 mg/100 mL<br>500 mg/100 mL</td>
-            <td class="goal-param">CPOT 0 to 2<br>•                             Other</td>
-            <td>2 mg, 4 mg, other</td>
-            <td>2 mg/hr</td>
-            <td>1 mg/hr</td>
-            <td>15 min</td>
-            <td>20 mg/hr</td>
-            <td>1 mg/hr to 20 mg/hr</td>
-            <td class="comments">Goal parameter must be monitored and documented every 15 minutes until goal is met.                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.                               Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="antihypertensive">
-            <td class="medication-name">niCARdipine (Rapid Titration)</td>
-            <td class="concentration">#1: 0.1 mg/mL<br>#2: 0.2 mg/mL</td>
-            <td class="dosing">20 mg/200 mL<br>25 mg/250 mL<br>40 mg/200 mL<br>50 mg/250 mL</td>
-            <td class="goal-param">SBP 130 - 150<br>•                            SBP 130 - 160<br>•                         SBP 140 - 180<br>•                                 SBP 150 - 180 and DBP < 105<br>•      SBP 150 - 185 and DBP <110<br>•                                                                           SBP 160 - 200<br>•                                  Other</td>
-            <td>none</td>
-            <td>5 mg/hr</td>
-            <td>2.5 mg/hr</td>
-            <td>5 min</td>
-            <td>15 mg/hr</td>
-            <td>2.5 mg/hr to 15 mg/hr</td>
-            <td class="comments">Central line preferred. It is recommended to change infusion site every 12 hours to minimize peripheral venous irritation.                                                                                                                 Goal parameter must be monitored and documented every 5 minutes until goal is met.                                                               Once goal parameter is met, decrease infusion rate to 3 mg/hr.                                                       Once goal parameter is met, RN may document goal every 30-60 minutes.                                                                                                                                                                                                     Hold infusion if SBP is less than 120.                                                                                                Turn IV off 1 hour after oral meds are given. <br>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="antihypertensive">
-            <td class="medication-name">niCARdipine</td>
-            <td class="concentration">#1: 0.1 mg/mL<br>#2: 0.2 mg/mL</td>
-            <td class="dosing">20 mg/200 mL<br>25 mg/250 mL<br>40 mg/200 mL<br>50 mg/250 mL</td>
-            <td class="goal-param">SBP 130 - 150<br>•                            SBP 130 - 160<br>•                         SBP 140 - 180<br>•                                 SBP 150 - 180 and DBP < 105<br>•      SBP 150 - 185 and DBP <110<br>•                                                                               SBP 160 - 200<br>•                                  Other</td>
-            <td>none</td>
-            <td>5 mg/hr</td>
-            <td>2.5 mg/hr</td>
-            <td>15 min</td>
-            <td>15 mg/hr</td>
-            <td>2.5 mg/hr to 15 mg/hr</td>
-            <td class="comments">Central line preferred. It is recommended to change infusion site every 12 hours to minimize peripheral venous irritation.                                                                                                               Goal parameter must be monitored and documented every 15 minutes until goal is met.                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.                                                                                                                                                                                                     Hold infusion if SBP is less than 120.                                                                                              Turn IV off 1 hour after oral meds are given. <br>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="">
-            <td class="medication-name">nitroglycerin</td>
-            <td class="concentration">200 mcg/mL</td>
-            <td class="dosing">50 mg/250 mL</td>
-            <td class="goal-param">SBP 100 - 140<br>•                             SBP 130 - 160<br>•                            SBP 140 - 180<br>•                               Other</td>
-            <td>none</td>
-            <td>10 mcg/min</td>
-            <td>10 mcg/min</td>
-            <td>5 min</td>
-            <td>200 mcg/min</td>
-            <td>10 mcg/min to 200 mcg/min</td>
-            <td class="comments">Non-PVC tubing/container required. Tolerance may begin in 12 to 24 hours.<br>Goal parameter must be monitored and documented every 5 minutes until goal is met.                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.                               Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="">
-            <td class="medication-name">nitroprusside</td>
-            <td class="concentration">#1: 200 mcg/mL<br>#2: 500 mcg/mL</td>
-            <td class="dosing">50 mg/250 mL<br>50 mg/100 mL</td>
-            <td class="goal-param">SBP 100 - 140<br>•                             SBP 130 - 160<br>•                            SBP 140 - 180<br>•                         Other</td>
-            <td>none</td>
-            <td>0.2 mcg/kg/min</td>
-            <td>0.2 mcg/kg/min</td>
-            <td>5 min</td>
-            <td>4 mcg/kg/min</td>
-            <td>0.2 mcg/kg/min to 4 mcg/kg/min</td>
-            <td class="comments">Protect from light.<br>Goal parameter must be monitored and documented every 5 minutes until goal is met.                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.                               Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="vasopressor">
-            <td class="medication-name">NORepinephrine</td>
-            <td class="concentration">#1a: 16 mcg/mL<br>#1b: 32 mcg/mL<br><br>#2: 128 mcg/mL</td>
-            <td class="dosing">4 mg/250 mL                 8 mg/250 mL<br>32 mg/250mL</td>
-            <td class="goal-param">MAP 65 - 75<br>•                            Other</td>
-            <td>none</td>
-            <td>4 mcg/min</td>
-            <td>2 mcg/min</td>
-            <td>2 min</td>
-            <td>30 mcg/min</td>
-            <td>2 mcg/min to 30 mcg/min</td>
-            <td class="comments">Administration via peripheral line may be considered for up to 24 hours.<br>Rates greater than 15 mcg/min must be administered via a central line.<br>Goal parameter must be monitored and documented every 2 minutes until goal is met.                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.  <br>Contact provider to consider adding vasopressin once dose ≥ 8 mcg/min.<br>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="vasopressor">
-            <td class="medication-name">phenylephrine</td>
-            <td class="concentration">#1: 80 mcg/mL<br>#2: 400 mcg/mL</td>
-            <td class="dosing">20 mg/250 mL<br>100 mg/250 mL</td>
-            <td class="goal-param">MAP 65 - 75<br>•                            Other</td>
-            <td>none</td>
-            <td>50 mcg/min</td>
-            <td>10 mcg/min</td>
-            <td>5 min</td>
-            <td>200 mcg/min</td>
-            <td>10 mcg/min to 200 mcg/min</td>
-            <td class="comments">Administration via peripheral line may be considered for up to 24 hours.<br>Rates greater than 150 mcg/min must be administered via a central line.<br>Goal parameter must be monitored and documented every 5 minutes until goal is met.                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.  <br>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="sedative">
-            <td class="medication-name">propofol</td>
-            <td class="concentration">10 mg/mL</td>
-            <td class="dosing">1000 mg/100 mL<br>500 mg/50 mL</td>
-            <td class="goal-param">RASS 0 to - 2<br>•                         RASS - 4 to - 5 if on NMB<br>•              Other</td>
-            <td>10 mg, 20 mg, other</td>
-            <td>10 mcg/kg/min</td>
-            <td>5 mcg/kg/min</td>
-            <td>5 min</td>
-            <td>60 mcg/kg/min</td>
-            <td>5 mcg/kg/min to 60 mcg/kg/min</td>
-            <td class="comments">Change vial and tubing every 12 hours.<br>Check triglycerides at baseline and weekly. Consider more frequent TG level for high dose propofol<br>Goal parameter must be monitored and documented every 5 minutes until goal is met.                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.                               Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="neuromuscular-blocker high-alert">
-            <td class="medication-name">ROCuronium<br><span class="warning">**HIGH ALERT**</span></td>
-            <td class="concentration">#1: 1 mg/mL<br>#2: 10 mg/ml</td>
-            <td class="dosing">100 mg/100 mL<br>300 mg/30 mL</td>
-            <td class="goal-param">TOF 2 / 4<br>•                                Ventilator synchrony<br>•               Other</td>
-            <td>1 mg/kg, other</td>
-            <td>5 mcg/kg/min</td>
-            <td>1 mcg/kg/min</td>
-            <td>15 min</td>
-            <td>16 mcg/kg/min</td>
-            <td>1 mcg/kg/min to 16 mcg/kg/min</td>
-            <td class="comments">**HIGH ALERT DRUG**<br>Warning, paralyzing agent causes respiratory depression. Patient must be ventilated and sedated prior to administration with RASS goal -4.  Do not titrate sedation off while on paralytic<br>Obtain baseline train-of-four prior to beginning infusion.<br>Goal parameter must be monitored and documented every 15 minutes until goal is met.                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.                               Notify provider  if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-        <tr class="neuromuscular-blocker high-alert">
-            <td class="medication-name">VECuronium<br><span class="warning">**HIGH ALERT**</span></td>
-            <td class="concentration">1 mg/mL</td>
-            <td class="dosing">100 mg/100 mL</td>
-            <td class="goal-param">TOF 2 / 4<br>•                                Ventilator synchrony<br>•               Other</td>
-            <td>0.1 mg/kg, other</td>
-            <td>1 mcg/kg/min</td>
-            <td>0.1 mcg/kg/min</td>
-            <td>15 min</td>
-            <td>1.7 mcg/kg/min</td>
-            <td>0.1 mcg/kg/min to 1.7 mcg/kg/min</td>
-            <td class="comments">**HIGH ALERT DRUG**<br>Warning, paralyzing agent causes respiratory depression. Patient must be ventilated and sedated prior to administration with RASS goal -4.  Do not titrate sedation off while on paralytic<br>Obtain baseline train-of-four prior to beginning infusion.<br>Goal parameter must be monitored and documented every 15 minutes until goal is met.                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.                               Notify provider if maximum dose is met and therapeutic goal is not achieved.<br>Discontinue order if rate remains at zero for 23 hours.<br>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
-        </tr>
-    </tbody>
+<thead>
+<tr>
+<th>Medication</th>
+<th>Standard Concentration</th>
+<th>Standard Dilution</th>
+<th>Goal Parameter</th>
+<th>Loading/Bolus Dose</th>
+<th>Initial Rate</th>
+<th>Increment Change</th>
+<th>Frequency</th>
+<th>Maximum Dose</th>
+<th>Dosing Range</th>
+<th>Order Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="neuromuscular-blocker high-alert">
+<td class="medication-name">atracurium<br/><span class="warning">**HIGH ALERT**</span></td>
+<td class="concentration">#1: 0.5 mg/mL<br/>#2: 0.2 mg/mL</td>
+<td class="dosing">50 mg/100 mL</td>
+<td class="goal-param">• TOF 2 / 4                                Ventilator synchrony               Other</td>
+<td>0.5 mg/kg, other</td>
+<td>2 mcg/kg/min</td>
+<td>1 mcg/kg/min</td>
+<td>15 min</td>
+<td>15 mcg/kg/min</td>
+<td>1 - 15 mcg/kg/min</td>
+<td class="comments">**HIGH ALERT DRUG**<br/>Warning, paralyzing agent causes respiratory depression.<br/> Patient must be ventilated and sedated prior to administration with RASS goal -4.  Do not titrate sedation off while on paralytic<br/>Obtain baseline train-of-four prior to beginning infusion.<br/><br/>Goal parameter must be monitored and documented every 15 minutes until goal is met.<br/> Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="neuromuscular-blocker high-alert">
+<td class="medication-name">cisatracurium<br/><span class="warning">**HIGH ALERT**</span></td>
+<td class="concentration">2 mg/mL</td>
+<td class="dosing">200 mg/100 mL</td>
+<td class="goal-param">• TOF 2 / 4                                Ventilator synchrony                 Other</td>
+<td>0.2 mg/kg, other</td>
+<td>1 mcg/kg/min</td>
+<td>1 mcg/kg/min</td>
+<td>15 min</td>
+<td>10 mcg/kg/min</td>
+<td>1 - 10 mcg/kg/min</td>
+<td class="comments">**HIGH ALERT DRUG**<br/>Warning, paralyzing agent causes respiratory depression.<br/> Patient must be ventilated and sedated prior to administration with RASS goal -4.  Do not titrate sedation off while on paralytic<br/>Obtain baseline train-of-four prior to beginning infusion.<br/><br/>Goal parameter must be monitored and documented every 15 minutes until goal is met.<br/>                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="antihypertensive non-formulary">
+<td class="medication-name">clevidipine<br/><span style="color: #E24301;">(AH non-formulary)</span></td>
+<td class="concentration">0.5 mg/mL</td>
+<td class="dosing">50 mg/100 mL <br/>25 mg/50 mL</td>
+<td class="goal-param">• SBP 130 - 150                            SBP 130 - 160                         SBP 140 - 180                                 SBP 150 - 180 DBP &lt; 105      SBP 150 - 185 DBP &lt;110                                                                               SBP 160 - 200                                  Other</td>
+<td>none</td>
+<td>1 mg/hr</td>
+<td>2 mg/hr</td>
+<td>2 min</td>
+<td>21 mg/hr</td>
+<td>1 - 21 mg/hr</td>
+<td class="comments">Change vial and tubing every 12 hours.<br/><br/>Goal parameter must be monitored and documented every 2 minutes until goal is met.<br/> Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="sedative">
+<td class="medication-name">dexmedeTOMIDine</td>
+<td class="concentration">4 mcg/mL</td>
+<td class="dosing">400 mcg/100 mL<br/>200 mcg/50mL</td>
+<td class="goal-param">• RASS 0 to -2</td>
+<td>none</td>
+<td>0.5 mcg/kg/hr</td>
+<td>0.1 mcg/kg/hr</td>
+<td>10 min</td>
+<td>1.4 mcg/kg/hr</td>
+<td>0.1 - 1.4mcg/kg/hr</td>
+<td class="comments">Not appropriate alone if patient on neuromuscular blocker (NMB).<br/> <br/>Goal parameter must be monitored and documented every 10 minutes until goal is met.<br/> Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>If HR less than 60, decrease rate by half &amp; notify provider.<br/> <br/>If HR is less than or equal to 50, pause the infusion &amp; notify provider.<br/><br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="">
+<td class="medication-name">dilTIAZem</td>
+<td class="concentration">1 mg/mL</td>
+<td class="dosing">125 mg/125 mL<br/>100 mg/100 mL</td>
+<td class="goal-param">• HR 60 - 110                                Other</td>
+<td>10 mg, 20 mg, other</td>
+<td>5 mg/hr</td>
+<td>2.5 mg/hr</td>
+<td>15 min</td>
+<td>15 mg/hr</td>
+<td>2.5 to 15 mg/hr</td>
+<td class="comments">Goal parameter must be monitored and documented every 15 minutes until goal is met.<br/> Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Turn IV off 2 hours after oral meds given.<br/><br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="vasopressor">
+<td class="medication-name">DOBUTamine</td>
+<td class="concentration">#1: 2000 mcg/mL<br/>#2: 4000 mcg/mL</td>
+<td class="dosing">1000 mg/250 mL<br/>500 mg/250 mL</td>
+<td class="goal-param">• MAP 65 - 75                         ScVO2 &gt; 70%                               CI 2 - 4                                          Other</td>
+<td>none</td>
+<td>2.5 mcg/kg/min</td>
+<td>2.5 mcg/kg/min</td>
+<td>5 min</td>
+<td>20 mcg/kg/min</td>
+<td>0.5 - 20 mcg/kg/min</td>
+<td class="comments">Goal parameter must be monitored and documented every 5 minutes until goal is met.<br/> Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Hold if HR &gt; 140.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/> RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="vasopressor">
+<td class="medication-name">DOPamine</td>
+<td class="concentration">#1: 3200 mcg/mL<br/>#2: 1600 mcg/mL</td>
+<td class="dosing">800 mg/250 mL<br/>400 mg/250 mL</td>
+<td class="goal-param">• MAP  65 - 75                            Other</td>
+<td>none</td>
+<td>2 mcg/kg/min</td>
+<td>2 mcg/kg/min</td>
+<td>2 min</td>
+<td>20 mcg/kg/min</td>
+<td>2 - 20 mcg/kg/min</td>
+<td class="comments">Administration via peripheral line may be considered for up to 24 hours.<br/>Rates greater than 10 mcg/kg/min must be administered via a central line.<br/><br/>Goal parameter must be monitored and documented every 2 minutes until goal is met.<br/> Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Hold if HR &gt; 140.<br/><br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/> <br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="vasopressor">
+<td class="medication-name">EPINEPHrine</td>
+<td class="concentration">#1: 20 mcg/mL<br/>#2: 40 mcg/mL</td>
+<td class="dosing">2 mg/100 mL.                 5 mg/250 mL<br/>10 mg/250 mL</td>
+<td class="goal-param">• MAP  65 - 75                             Other</td>
+<td>none</td>
+<td>1 mcg/min</td>
+<td>1 mcg/min</td>
+<td>2 min</td>
+<td>20 mcg/min</td>
+<td>1 - 20 mcg/min</td>
+<td class="comments">Administration via peripheral line may be considered for up to 24 hours.<br/>Rates greater than 15 mcg/min must be administered via a central line.<br/><br/>Goal parameter must be monitored and documented every 2 minutes until goal is met.<br/> Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Hold if HR &gt; 140.<br/><br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="antihypertensive">
+<td class="medication-name">esmolol</td>
+<td class="concentration">#1: 10 mg/mL<br/>#2: 20 mg/mL</td>
+<td class="dosing">2500 mg/250 mL<br/>2000 mg/100 mL</td>
+<td class="goal-param">• SBP 100 - 140                             SBP 130 - 160                            SBP 140 - 180                               HR 60 - 110                               Other</td>
+<td>500 mcg/kg, 1000 mcg/kg, other</td>
+<td>50 mcg/kg/min</td>
+<td>50 mcg/kg/min</td>
+<td>5 min</td>
+<td>300 mcg/kg/min</td>
+<td>50 - 300 mcg/kg/min</td>
+<td class="comments">Goal parameter must be monitored and documented every 5 minutes until goal is met.<br/> Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="analgesic">
+<td class="medication-name">fentaNYL</td>
+<td class="concentration">#1: 10 mcg/mL<br/>#2: 50 mcg/mL</td>
+<td class="dosing">2500 mcg/250 mL<br/>1000 mcg/100 mL<br/>5000 mcg/100 mL<br/>500 mcg/50 mL</td>
+<td class="goal-param">• CPOT 0 to 2                            Other</td>
+<td>25 mcg, 50 mcg, 100 mcg, other</td>
+<td>50 mcg/hr</td>
+<td>25 mcg/hr</td>
+<td>60 min</td>
+<td>200 mcg/hr</td>
+<td>25 - 200 mcg/hr</td>
+<td class="comments">Warning: Medication causes respiratory depression.<br/> <br/>For Breakthrough Pain (CPOT &gt;2): Bolus 50 mcg every 5 minutes up to 3 times within one hour.<br/> If goal is not achieved after 3 consecutive boluses, then increase infusion rate.  <br/>Goal parameter must be monitored and documented every 60 minutes until goal is met.<br/><br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="analgesic">
+<td class="medication-name">HYDROmorphone</td>
+<td class="concentration">#1: 0.2 mg/mL<br/>#2: 1 mg/mL</td>
+<td class="dosing">20 mg/100 mL<br/>100 mg/100 mL</td>
+<td class="goal-param">• CPOT 0 to 2                             Other</td>
+<td>0.4 mg, other</td>
+<td>0.4 mg/hr</td>
+<td>0.2 mg/hr</td>
+<td>15 min</td>
+<td>2 mg/hr</td>
+<td>0.2 - 2 mg/hr</td>
+<td class="comments">Goal parameter must be monitored and documented every 15 minutes until goal is met.<br/>Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="vasopressor">
+<td class="medication-name">isoproterenol</td>
+<td class="concentration">4 mcg/mL</td>
+<td class="dosing">1000 mcg/250 mL<br/>2000 mcg/500 mL</td>
+<td class="goal-param">• MAP 65 - 75                                HR 60 - 100                                Other</td>
+<td>none</td>
+<td>2 mcg/min</td>
+<td>1 mcg/min</td>
+<td>5 min</td>
+<td>20 mcg/min</td>
+<td>1 - 20 mcg/min</td>
+<td class="comments">Goal parameter must be monitored and documented every 5 minutes until goal is met.<br/>                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/> RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="sedative">
+<td class="medication-name">ketamine (Sub-dissociative) (pain)</td>
+<td class="concentration">#1: 2 mg/mL<br/>#2: 10 mg/mL</td>
+<td class="dosing">500 mg/250 mL<br/>1000 mg/100 mL</td>
+<td class="goal-param">• CPOT 0 to 2                          RASS 0 to - 2                         RASS - 4 to - 5 if on NMB              Other</td>
+<td>0.25 mg/kg, other</td>
+<td>0.05 mg/kg/hr</td>
+<td>0.05 mg/kg/hr</td>
+<td>60 min</td>
+<td>0.3 mg/kg/hr</td>
+<td>0.05 - 0.3 mg/kg/hr</td>
+<td class="comments">Goal parameter must be monitored and documented every 60 minutes until goal is met.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="sedative">
+<td class="medication-name">ketamine (Dissociative)</td>
+<td class="concentration">#1: 2 mg/mL<br/>#2: 10 mg/mL</td>
+<td class="dosing">500 mg/250 mL<br/>1000 mg/100 mL</td>
+<td class="goal-param">• RASS - 4 to - 5 if on NMB            Other</td>
+<td>1.5 mg/kg, 3 mg/kg, other</td>
+<td>1 mg/kg/hr</td>
+<td>0.5 mg/kg/hr</td>
+<td>60 min</td>
+<td>4 mg/kg/hr</td>
+<td>1 - 4 mg/kg/hr</td>
+<td class="comments">Goal parameter must be monitored and documented every 60 minutes until goal is met.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="">
+<td class="medication-name">labetolol</td>
+<td class="concentration">5 mg/mL</td>
+<td class="dosing">200 mg/40 mL<br/>400 mg/80 mL</td>
+<td class="goal-param">• SBP 100 - 140                             SBP 130 - 160                            SBP 140 - 180                              HR 60 - 110                               Other</td>
+<td>10 mg, 20 mg, other</td>
+<td>1 mg/min</td>
+<td>1 mg/min</td>
+<td>15 min</td>
+<td>4 mg/min</td>
+<td>1 - 4 mg/min</td>
+<td class="comments">Goal parameter must be monitored and documented every 15 minutes until goal is met.<br/>                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="sedative">
+<td class="medication-name">LORazepam</td>
+<td class="concentration">1 mg/mL</td>
+<td class="dosing">100 mg/100 mL<br/>50 mg/50 mL</td>
+<td class="goal-param">• RASS 0 to - 2                              Other</td>
+<td>1 mg, 2 mg, other</td>
+<td>2 mg/hr</td>
+<td>1 mg/hr</td>
+<td>60 min</td>
+<td>10 mg/hr</td>
+<td>1 - 10 mg/hr</td>
+<td class="comments">Monitor for propylene glycol toxicity.For RASS &gt; 0: Bolus 1 mg every 10 minutes up to 3 times within one hour. If goal is not achieved after 3 consecutive boluses, then increase infusion rate.                                            <br/>Goal parameter must be monitored and documented every 60 minutes until goal is met.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="sedative">
+<td class="medication-name">midazolam</td>
+<td class="concentration">1 mg/mL</td>
+<td class="dosing">100 mg/100 mL<br/>50 mg/50 mL</td>
+<td class="goal-param">• RASS 0 to - 2                         RASS - 4 to - 5 if on NMB              Other</td>
+<td>1 mg, 2 mg, other</td>
+<td>2 mg/hr</td>
+<td>1 mg/hr</td>
+<td>60 min</td>
+<td>10 mg/hr</td>
+<td>1 - 10 mg/hr</td>
+<td class="comments">For RASS &gt; 0: Bolus 2 mg every 5 minutes up to 3 times within one hour. If goal is not achieved after 3 consecutive boluses, then increase infusion rate.                                                                                                           <br/>Goal parameter must be monitored and documented every 60 minutes until goal is met.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="inotrope">
+<td class="medication-name">milrinone</td>
+<td class="concentration">#1: 200 mcg/mL<br/>#2: 400 mcg/mL</td>
+<td class="dosing">20 mg/100 mL<br/>40 mg/100 mL</td>
+<td class="goal-param">• CI 2 - 4                                     Other</td>
+<td>none</td>
+<td>0.25 mcg/kg/min</td>
+<td>0.125 mcg/kg/min</td>
+<td>30 min</td>
+<td>0.75 mcg/kg/min</td>
+<td>0.125 - 0.75 mcg/kg/min</td>
+<td class="comments">Loading dose not typically given due to risk of hypotension. May require vasopressor support.<br/>Goal parameter must be monitored and documented every 30 minutes until goal is met.<br/>                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="analgesic">
+<td class="medication-name">morphine</td>
+<td class="concentration">#1: 1 mg/mL<br/>#2: 5 mg/mL</td>
+<td class="dosing">100 mg/100 mL<br/>500 mg/100 mL</td>
+<td class="goal-param">• CPOT 0 to 2                             Other</td>
+<td>2 mg, 4 mg, other</td>
+<td>2 mg/hr</td>
+<td>1 mg/hr</td>
+<td>15 min</td>
+<td>20 mg/hr</td>
+<td>1 - 20 mg/hr</td>
+<td class="comments">Goal parameter must be monitored and documented every 15 minutes until goal is met.<br/>                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="antihypertensive">
+<td class="medication-name">niCARdipine (Rapid Titration)</td>
+<td class="concentration">#1: 0.1 mg/mL<br/>#2: 0.2 mg/mL</td>
+<td class="dosing">20 mg/200 mL<br/>25 mg/250 mL<br/>40 mg/200 mL<br/>50 mg/250 mL</td>
+<td class="goal-param">• SBP 130 - 150                            SBP 130 - 160                         SBP 140 - 180                                 SBP 150 - 180 and DBP &lt; 105      SBP 150 - 185 and DBP &lt;110                                                                           SBP 160 - 200                                  Other</td>
+<td>none</td>
+<td>5 mg/hr</td>
+<td>2.5 mg/hr</td>
+<td>5 min</td>
+<td>15 mg/hr</td>
+<td>2.5 - 15 mg/hr</td>
+<td class="comments">Central line preferred. It is recommended to change infusion site every 12 hours to minimize peripheral venous irritation.                                                                                                                 <br/>Goal parameter must be monitored and documented every 5 minutes until goal is met.<br/>                                                               Once goal parameter is met, decrease infusion rate to 3 mg/hr.<br/>                                                       Once goal parameter is met, RN may document goal every 30-60 minutes.<br/>                                                                                                                                                                                                     Hold infusion if SBP is less than 120.                                                                                                <br/>Turn IV off 1 hour after oral meds are given.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="antihypertensive">
+<td class="medication-name">niCARdipine</td>
+<td class="concentration">#1: 0.1 mg/mL<br/>#2: 0.2 mg/mL</td>
+<td class="dosing">20 mg/200 mL<br/>25 mg/250 mL<br/>40 mg/200 mL<br/>50 mg/250 mL</td>
+<td class="goal-param">• SBP 130 - 150                            SBP 130 - 160                         SBP 140 - 180                                 SBP 150 - 180 and DBP &lt; 105      SBP 150 - 185 and DBP &lt;110                                                                               SBP 160 - 200                                  Other</td>
+<td>none</td>
+<td>5 mg/hr</td>
+<td>2.5 mg/hr</td>
+<td>15 min</td>
+<td>15 mg/hr</td>
+<td>2.5 - 15 mg/hr</td>
+<td class="comments">Central line preferred. It is recommended to change infusion site every 12 hours to minimize peripheral venous irritation.                                                                                                               <br/>Goal parameter must be monitored and documented every 15 minutes until goal is met.<br/>                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.<br/>                                                                                                                                                                                                     Hold infusion if SBP is less than 120.                                                                                              <br/>Turn IV off 1 hour after oral meds are given.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="">
+<td class="medication-name">nitroglycerin</td>
+<td class="concentration">200 mcg/mL</td>
+<td class="dosing">50 mg/250 mL</td>
+<td class="goal-param">• SBP 100 - 140                             SBP 130 - 160                            SBP 140 - 180                               Other</td>
+<td>none</td>
+<td>10 mcg/min</td>
+<td>10 mcg/min</td>
+<td>5 min</td>
+<td>200 mcg/min</td>
+<td>10 - 200 mcg/min</td>
+<td class="comments">Non-PVC tubing/container required. Tolerance may begin in 12 to 24 hours.<br/>Goal parameter must be monitored and documented every 5 minutes until goal is met.<br/>                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="">
+<td class="medication-name">nitroprusside</td>
+<td class="concentration">#1: 200 mcg/mL<br/>#2: 500 mcg/mL</td>
+<td class="dosing">50 mg/250 mL<br/>50 mg/100 mL</td>
+<td class="goal-param">• SBP 100 - 140                             SBP 130 - 160                            SBP 140 - 180                         Other</td>
+<td>none</td>
+<td>0.2 mcg/kg/min</td>
+<td>0.2 mcg/kg/min</td>
+<td>5 min</td>
+<td>4 mcg/kg/min</td>
+<td>0.2 - 4 mcg/kg/min</td>
+<td class="comments">Protect from light.<br/>Goal parameter must be monitored and documented every 5 minutes until goal is met.<br/>                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="vasopressor">
+<td class="medication-name">NORepinephrine</td>
+<td class="concentration">#1a: 16 mcg/mL<br/>#1b: 32 mcg/mL<br/><br/>#2: 128 mcg/mL</td>
+<td class="dosing">4 mg/250 mL                 8 mg/250 mL<br/>32 mg/250mL</td>
+<td class="goal-param">• MAP 65 - 75                            Other</td>
+<td>none</td>
+<td>4 mcg/min</td>
+<td>2 mcg/min</td>
+<td>2 min</td>
+<td>30 mcg/min</td>
+<td>2 - 30 mcg/min</td>
+<td class="comments">Administration via peripheral line may be considered for up to 24 hours.<br/>Rates greater than 15 mcg/min must be administered via a central line.<br/><br/>Goal parameter must be monitored and documented every 2 minutes until goal is met.<br/>                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.<br/>  Contact provider to consider adding vasopressin once dose ≥ 8 mcg/min.<br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="vasopressor">
+<td class="medication-name">phenylephrine</td>
+<td class="concentration">#1: 80 mcg/mL<br/>#2: 400 mcg/mL</td>
+<td class="dosing">20 mg/250 mL<br/>100 mg/250 mL</td>
+<td class="goal-param">• MAP 65 - 75                            Other</td>
+<td>none</td>
+<td>50 mcg/min</td>
+<td>10 mcg/min</td>
+<td>5 min</td>
+<td>200 mcg/min</td>
+<td>10 - 200 mcg/min</td>
+<td class="comments">Administration via peripheral line may be considered for up to 24 hours.<br/>Rates greater than 150 mcg/min must be administered via a central line.<br/><br/>Goal parameter must be monitored and documented every 5 minutes until goal is met.<br/>                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="sedative">
+<td class="medication-name">propofol</td>
+<td class="concentration">10 mg/mL</td>
+<td class="dosing">1000 mg/100 mL<br/>500 mg/50 mL</td>
+<td class="goal-param">• RASS 0 to - 2                         RASS - 4 to - 5 if on NMB              Other</td>
+<td>10 mg, 20 mg, other</td>
+<td>10 mcg/kg/min</td>
+<td>5 mcg/kg/min</td>
+<td>5 min</td>
+<td>60 mcg/kg/min</td>
+<td>5 - 60 mcg/kg/min</td>
+<td class="comments">Change vial and tubing every 12 hours.<br/>Check triglycerides at baseline and weekly. Consider more frequent TG level for high dose propofol<br/>Goal parameter must be monitored and documented every 5 minutes until goal is met.<br/>                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="neuromuscular-blocker high-alert">
+<td class="medication-name">ROCuronium<br/><span class="warning">**HIGH ALERT**</span></td>
+<td class="concentration">#1: 1 mg/mL<br/>#2: 10 mg/ml</td>
+<td class="dosing">100 mg/100 mL<br/>300 mg/30 mL</td>
+<td class="goal-param">• TOF 2 / 4                                Ventilator synchrony               Other</td>
+<td>1 mg/kg, other</td>
+<td>5 mcg/kg/min</td>
+<td>1 mcg/kg/min</td>
+<td>15 min</td>
+<td>16 mcg/kg/min</td>
+<td>1 - 16 mcg/kg/min</td>
+<td class="comments">**HIGH ALERT DRUG**<br/>Warning, paralyzing agent causes respiratory depression.<br/> Patient must be ventilated and sedated prior to administration with RASS goal -4.  Do not titrate sedation off while on paralytic<br/>Obtain baseline train-of-four prior to beginning infusion.<br/><br/>Goal parameter must be monitored and documented every 15 minutes until goal is met.<br/>                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Notify provider  if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+<tr class="neuromuscular-blocker high-alert">
+<td class="medication-name">VECuronium<br/><span class="warning">**HIGH ALERT**</span></td>
+<td class="concentration">1 mg/mL</td>
+<td class="dosing">100 mg/100 mL</td>
+<td class="goal-param">• TOF 2 / 4                                Ventilator synchrony               Other</td>
+<td>0.1 mg/kg, other</td>
+<td>1 mcg/kg/min</td>
+<td>0.1 mcg/kg/min</td>
+<td>15 min</td>
+<td>1.7 mcg/kg/min</td>
+<td>0.1 - 1.7 mcg/kg/min</td>
+<td class="comments">**HIGH ALERT DRUG**<br/>Warning, paralyzing agent causes respiratory depression.<br/> Patient must be ventilated and sedated prior to administration with RASS goal -4.  Do not titrate sedation off while on paralytic<br/>Obtain baseline train-of-four prior to beginning infusion.<br/><br/>Goal parameter must be monitored and documented every 15 minutes until goal is met.<br/>                                                          Once goal parameter is met, RN may document goal every 30-60 minutes.<br/> <br/>Notify provider if maximum dose is met and therapeutic goal is not achieved.<br/><br/>Discontinue order if rate remains at zero for 23 hours.<br/>RN may restart infusion at the initial rate or the last documented rate if it is lower than the initial rate if infusion is paused.</td>
+</tr>
+</tbody>
 </table>
 </div>
 <div class="footer">
-        <strong>Adventist Health</strong> | Medication Safety Standards<br>
+<strong>Adventist Health</strong> | Medication Safety Standards<br/>
         For internal use only | Updated: November 2025
     </div>
-</body>
+</div></body>
 </html>
